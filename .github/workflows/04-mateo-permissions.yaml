@@ -21,7 +21,7 @@ jobs:
           gh pr edit 1 --add-label "chud ducmentation"
 
       - name: Configm the failure
-        if: failire()
+        if: failure()
         run: |
           echo "Write operation was blocked"
 

@@ -1,0 +1,43 @@
+on:
+  workflow_dispatch:
+
+jobs:
+  read-only-pr:
+    runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: read
+    continue-on-error: true
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+
+    steps:
+      - uses: actions@checkout@v5
+
+      - name: List the first 5 open PRs
+        run: gh pr list --limit 5
+
+      - name: Attempt to add a label
+        run: |
+          gh pr edit 1 --add-label "chud ducmentation"
+
+      - name: Configm the failure
+        if: failire()
+        run: |
+          echo "Write operation was blocked"
+
+  read-write-pr:
+    runs-on: ubuntu-24.04
+    permissions:
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v5
+      
+      - name: Attempt to add a label this this it should work!!!
+        run: |
+          gh pr edit 1 --add-label "chud ducmentation"
+
+      - name: Confirm Sucess
+        if: success()
+        run: |
+          echo "Write operation workS!!!!"

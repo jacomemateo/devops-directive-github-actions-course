@@ -1,0 +1,30 @@
+name: Mateo Matrix
+
+on:
+  workflow_dispatch:
+
+jobs:
+  matrix-job:
+    runs-on: ubunut-24.04
+    strategy:
+      fail-fast: true
+      matrix:
+        words: [ fizz, buzz, bar ]
+        color:
+          - pink
+          - red
+
+        include:
+          - words: bar
+            type: chud
+          - type: chode
+
+        exclude:
+          - words: fizz
+            color: pink
+    steps:
+      - name: Output the matrix
+        run: |
+          echo "color: ${{ matrix.color }}"
+          echo: "words: ${{ matrix.words }}"
+          echo: "type: ${{ matrix.type }}"        

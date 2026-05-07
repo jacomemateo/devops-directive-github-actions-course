@@ -11,7 +11,7 @@ jobs:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
 
     steps:
-      - uses: actions@checkout@v5
+      - uses: actions/checkout@v5
 
       - name: List the first 5 open PRs
         run: gh pr list --limit 5

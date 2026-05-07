@@ -1,0 +1,18 @@
+name: Mateo's Aweosme Concurrency
+
+on:
+  workflow_dispatch:
+
+jobs:
+  chud-job:
+    concurrency:
+      group: chud-group
+      cancel-in-progress: true
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Sleep so we have time to cancel this!!!!
+        run: |
+          echo "This is a job but it will be cancled and you WONT see the end of it"
+          sleep 30
+        timeout-minutes: 2
+          

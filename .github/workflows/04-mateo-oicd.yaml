@@ -5,7 +5,7 @@ on:
 
 jobs:
   matrix-job:
-    runs-on: ubunut-24.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: true
       matrix:
@@ -26,5 +26,5 @@ jobs:
       - name: Output the matrix
         run: |
           echo "color: ${{ matrix.color }}"
-          echo: "words: ${{ matrix.words }}"
-          echo: "type: ${{ matrix.type }}"        
+          echo "words: ${{ matrix.words }}"
+          echo "type: ${{ matrix.type }}"        

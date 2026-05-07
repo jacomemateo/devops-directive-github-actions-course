@@ -14,5 +14,6 @@ jobs:
         run: |
           echo "This is a job but it will be cancled and you WONT see the end of it"
           sleep 30
+          echo "this is the end"
         timeout-minutes: 2
           
